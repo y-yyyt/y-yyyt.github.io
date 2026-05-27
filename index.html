@@ -104,9 +104,9 @@
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 330px;
-      gap: 42px;
-      align-items: start;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 44px;
+      align-items: center;
       padding: 30px 0 22px;
     }
 
@@ -143,47 +143,61 @@
 
     .portrait-card {
       border: 1px solid var(--line);
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.78);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.82);
       overflow: hidden;
-      box-shadow: 0 20px 48px rgba(16, 24, 40, 0.08);
+      box-shadow: 0 18px 44px rgba(16, 24, 40, 0.08);
     }
 
     .portrait-visual {
-      min-height: 180px;
-      padding: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        radial-gradient(circle at 18% 22%, rgba(36, 95, 147, 0.18), transparent 30%),
-        radial-gradient(circle at 82% 18%, rgba(36, 115, 95, 0.18), transparent 34%),
-        linear-gradient(135deg, #ffffff 0%, #eef4f8 100%);
-    }
-
-    .monogram {
-      width: 116px;
-      height: 116px;
+      padding: 18px 22px 12px;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(36, 95, 147, 0.18);
-      border-radius: 50%;
+      background:
+        linear-gradient(135deg, #f8fbff 0%, #eef5f7 100%);
+      overflow: hidden;
+    }
+
+    .portrait-visual img {
+      width: 126px;
+      aspect-ratio: 4 / 5;
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      object-fit: cover;
+      object-position: center top;
+      box-shadow: 0 8px 22px rgba(16, 24, 40, 0.1);
+    }
+
+    .profile-heading {
+      padding: 12px 22px 2px;
+      text-align: center;
       background: #fff;
-      color: var(--blue);
-      font-size: 38px;
-      font-weight: 780;
-      box-shadow: 0 12px 30px rgba(36, 95, 147, 0.12);
+    }
+
+    .profile-heading strong {
+      display: block;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .profile-heading span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .profile-list {
-      padding: 20px 22px 22px;
+      padding: 8px 22px 20px;
     }
 
     .profile-row {
       display: grid;
-      grid-template-columns: 86px minmax(0, 1fr);
+      grid-template-columns: 80px minmax(0, 1fr);
       gap: 12px;
-      padding: 9px 0;
+      padding: 8px 0;
       border-bottom: 1px dashed var(--line);
       font-size: 14px;
     }
@@ -202,7 +216,7 @@
     }
 
     .layout {
-      max-width: 880px;
+      max-width: 100%;
     }
 
     section {
@@ -229,6 +243,19 @@
 
     p {
       margin: 0 0 14px;
+    }
+
+    strong {
+      color: var(--ink);
+      font-weight: 760;
+    }
+
+    mark {
+      padding: 0 4px;
+      border-radius: 4px;
+      color: #174d78;
+      background: var(--blue-soft);
+      font-weight: 680;
     }
 
     ul {
@@ -294,9 +321,10 @@
 
     .work-card {
       display: grid;
-      grid-template-columns: 128px minmax(0, 1fr);
-      gap: 18px;
-      padding: 18px 0;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+      padding: 24px 0;
       border-top: 1px solid var(--line);
     }
 
@@ -306,7 +334,7 @@
     }
 
     .work-visual {
-      min-height: 116px;
+      min-height: 170px;
       border: 1px solid var(--line);
       border-radius: 9px;
       display: grid;
@@ -317,6 +345,32 @@
       font-weight: 760;
       text-align: center;
       line-height: 1.35;
+    }
+
+    .image-visual {
+      min-height: 190px;
+      padding: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .framework-visual {
+      aspect-ratio: 1 / 1;
+      min-height: auto;
+    }
+
+    .demo-visual {
+      aspect-ratio: 7 / 5;
+      min-height: auto;
+    }
+
+    .image-visual img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      padding: 10px;
+      background: #fff;
     }
 
     .visual-blue {
@@ -347,6 +401,11 @@
     .work-desc {
       margin: 0 0 9px;
       color: #3c4654;
+    }
+
+    .work-desc strong,
+    .practice-card strong.inline {
+      color: var(--blue);
     }
 
     .tag-row {
@@ -522,6 +581,16 @@
         grid-template-columns: 1fr;
       }
 
+      .framework-visual {
+        min-height: auto;
+        aspect-ratio: 1 / 1;
+      }
+
+      .demo-visual {
+        min-height: auto;
+        aspect-ratio: 7 / 5;
+      }
+
       .edu-head {
         display: grid;
       }
@@ -558,20 +627,26 @@
         <h1>Yuting Yang</h1>
         <div class="cn-name">杨宇婷 · Chongqing University</div>
         <p class="lead">
-          I am an undergraduate student in Data Science and Big Data Technology at the School of Big Data
-          & Software Engineering, Chongqing University. My interests lie in AI for education, learning analytics,
-          knowledge tracing, large language models, and trustworthy intelligent systems.
+          I am an undergraduate student in <strong>Data Science and Big Data Technology</strong> at the School of Big Data
+          & Software Engineering, Chongqing University. My interests lie in <mark>AI for education</mark>,
+          <mark>learning analytics</mark>, <mark>knowledge tracing</mark>, large language models,
+          and trustworthy intelligent systems.
         </p>
         <p>
-          My recent projects connect multi-agent reasoning, misinformation detection, multimodal learning,
-          and LLM-based educational data generation. For graduate study, I hope to build intelligent systems
-          that model learning processes, support educational decision-making, and remain reliable in real scenarios.
+          My recent projects connect <strong>multi-agent reasoning</strong>, misinformation detection,
+          multimodal learning, and <strong>LLM-based educational data generation</strong>. For graduate study,
+          I hope to build intelligent systems that model learning processes, support educational decision-making,
+          and remain reliable in real scenarios.
         </p>
       </div>
 
-      <aside class="portrait-card" aria-label="Profile summary">
+      <aside class="portrait-card" aria-label="Portrait">
         <div class="portrait-visual">
-          <div class="monogram">YY</div>
+          <img src="assets/profile.jpg" alt="Portrait of Yuting Yang">
+        </div>
+        <div class="profile-heading">
+          <strong>Yuting Yang</strong>
+          <span>Undergraduate · Chongqing University</span>
         </div>
         <div class="profile-list">
           <div class="profile-row">
@@ -632,14 +707,17 @@
           </p>
 
           <article class="work-card">
-            <div class="work-visual visual-blue">Multi-Agent<br>Detection</div>
+            <div class="work-visual image-visual framework-visual">
+              <img src="assets/multi_agent_framework.png" alt="Framework of the multi-agent fake news detection system">
+            </div>
             <div>
               <div class="work-title">Multi-Agent Fake News Detection System with Reflection and Iterative Learning</div>
               <div class="work-role">Project Leader · Advisor: Prof. Min Gao</div>
               <p class="work-desc">
-                Proposed a CrewAI-based detection framework that combines fast judgment, dynamic fact-checking,
-                comprehensive reasoning, reflection triggers, and structured experience memory. The system improved
-                F1-scores on PolitiFact and GossipCop compared with several baseline methods.
+                Proposed a <strong>CrewAI-based detection framework</strong> that combines fast judgment,
+                dynamic fact-checking, comprehensive reasoning, reflection triggers, and structured experience memory.
+                The system improved <strong>F1-scores on PolitiFact and GossipCop</strong> compared with several
+                baseline methods.
               </p>
               <div class="tag-row">
                 <span class="tag">Multi-agent systems</span>
@@ -651,14 +729,17 @@
           </article>
 
           <article class="work-card">
-            <div class="work-visual visual-green">Multimodal<br>Reasoning</div>
+            <div class="work-visual image-visual demo-visual">
+              <img src="assets/spectra_demo.png" alt="Interface example of the fake news detection system">
+            </div>
             <div>
               <div class="work-title">Multimodal Fake News Detection Based on MoE and Knowledge-enhanced Reasoning</div>
               <div class="work-role">Core Member · Advisor: Prof. Min Gao</div>
               <p class="work-desc">
-                Participated in designing a multimodal detection method with expert routing, decision-making,
-                retrieval-augmented reasoning, and text-image-audio-video expert models. The model achieved
-                88.11% accuracy and 84.60% F1-score on the Weibo-21 dataset.
+                Participated in designing a multimodal detection method with <strong>expert routing</strong>,
+                decision-making, retrieval-augmented reasoning, and text-image-audio-video expert models.
+                The model achieved <strong>88.11% accuracy</strong> and <strong>84.60% F1-score</strong>
+                on the Weibo-21 dataset.
               </p>
               <div class="tag-row">
                 <span class="tag">Multimodal learning</span>
@@ -675,9 +756,10 @@
               <div class="work-title">LLM-based Virtual Student Response Generation and Performance Prediction</div>
               <div class="work-role">Independent Project</div>
               <p class="work-desc">
-                Explored LLM-based generation of virtual student response records for educational modeling scenarios
-                with limited or sensitive real data. The pipeline includes student profile construction, response behavior
-                simulation, ASSISTments-format alignment, and pyKT-based knowledge tracing experiments.
+                Explored <strong>LLM-based generation of virtual student response records</strong> for educational
+                modeling scenarios with limited or sensitive real data. The pipeline includes student profile construction,
+                response behavior simulation, <strong>ASSISTments-format alignment</strong>, and pyKT-based
+                knowledge tracing experiments.
               </p>
               <div class="tag-row">
                 <span class="tag">Educational data</span>
@@ -736,7 +818,7 @@
                   </div>
                   <p>
                     Led League affairs and themed activities; the activity on the spirit of the War of Resistance
-                    was selected as a Chongqing University Model League Day Activity, with excellent evaluations
+                    was selected as a <strong class="inline">Chongqing University Model League Day Activity</strong>, with excellent evaluations
                     for three consecutive semesters.
                   </p>
                 </li>
@@ -746,8 +828,9 @@
                     <span class="role-time">2024.9 - 2025.6</span>
                   </div>
                   <p>
-                    Organized 10+ volunteer and campus activities, reported 4,000+ volunteer hours, supported social
-                    practice project management, and was awarded Advanced Individual of Chongqing University Student Union.
+                    Organized <strong class="inline">10+ volunteer and campus activities</strong>, reported
+                    <strong class="inline">4,000+ volunteer hours</strong>, supported social practice project management,
+                    and was awarded Advanced Individual of Chongqing University Student Union.
                   </p>
                 </li>
                 <li>
@@ -756,8 +839,9 @@
                     <span class="role-time">2024.9 - 2025.6</span>
                   </div>
                   <p>
-                    Organized school-level activities covering 1,000+ participants and co-wrote a summer social practice
-                    report that received a university-level Outstanding Research Report award.
+                    Organized school-level activities covering <strong class="inline">1,000+ participants</strong> and
+                    co-wrote a summer social practice report that received a university-level
+                    <strong class="inline">Outstanding Research Report</strong> award.
                   </p>
                 </li>
               </ul>
@@ -766,11 +850,11 @@
             <div class="practice-card">
               <strong>Volunteer Teaching and Digital Literacy Education</strong>
               <p>
-                Led two rural education programs that brought programming, STEAM learning, artificial intelligence,
-                and digital literacy to students in Sichuan and Xinjiang. The teams won the only national Gold Award
-                in the STEAM Rural Classroom Zhixing Program and a national Bronze Award in the Nippon Paint Rural
-                Teaching Program; related work was reported by People's Daily, Chongqing Youth League, and other
-                mainstream media.
+                Led two rural education programs that brought <strong class="inline">programming, STEAM learning,
+                artificial intelligence, and digital literacy</strong> to students in Sichuan and Xinjiang. The teams won
+                the <strong class="inline">only national Gold Award</strong> in the STEAM Rural Classroom Zhixing Program
+                and a national Bronze Award in the Nippon Paint Rural Teaching Program; related work was reported by
+                <strong class="inline">People's Daily</strong>, Chongqing Youth League, and other mainstream media.
               </p>
             </div>
           </div>
