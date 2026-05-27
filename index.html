@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -8,21 +8,17 @@
 
   <style>
     :root {
-      --ink: #182230;
-      --text: #344054;
-      --muted: #667085;
-      --line: #e4e7ec;
+      --ink: #494e52;
+      --text: #494e52;
+      --muted: #7a8288;
+      --line: #f2f3f3;
       --paper: #ffffff;
-      --soft: #f7f9fc;
-      --blue: #245f93;
-      --blue-soft: #e8f1fb;
-      --green: #24735f;
-      --green-soft: #e7f4ef;
-      --coral: #a44b3f;
-      --coral-soft: #f8ece9;
-      --gold: #8a6a1f;
-      --gold-soft: #f6f0dc;
-      --max-width: 1120px;
+      --soft: #fafafa;
+      --blue: #52adc8;
+      --blue-soft: #eef8fb;
+      --green: #4f8f78;
+      --green-soft: #f3faf7;
+      --max-width: 1280px;
     }
 
     * {
@@ -36,16 +32,14 @@
     body {
       margin: 0;
       color: var(--text);
-      background:
-        linear-gradient(180deg, #f7f9fc 0, #fff 360px),
-        #fff;
+      background: #fff;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, "Microsoft YaHei", sans-serif;
-      font-size: 15.5px;
-      line-height: 1.72;
+      font-size: 16px;
+      line-height: 1.6;
     }
 
     a {
-      color: var(--blue);
+      color: #2f7f99;
       text-decoration: none;
     }
 
@@ -53,19 +47,31 @@
       text-decoration: underline;
     }
 
+    strong {
+      color: var(--ink);
+      font-weight: 760;
+    }
+
+    mark {
+      padding: 0;
+      color: #2f7f99;
+      background: transparent;
+      font-weight: 700;
+    }
+
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 5;
-      border-bottom: 1px solid rgba(228, 231, 236, 0.9);
-      background: rgba(255, 255, 255, 0.92);
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(10px);
     }
 
     .nav {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 13px 28px;
+      padding: 14px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -73,17 +79,16 @@
     }
 
     .brand {
-      color: var(--ink);
+      color: #343a40;
       font-size: 15px;
-      font-weight: 760;
-      letter-spacing: 0.01em;
+      font-weight: 700;
       white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 22px;
       font-size: 14px;
     }
 
@@ -99,172 +104,223 @@
     .page {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 38px 28px 72px;
-    }
-
-    .hero {
+      padding: 42px 28px 72px;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 300px;
-      gap: 44px;
-      align-items: center;
-      padding: 30px 0 22px;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 58px;
+      align-items: start;
     }
 
-    .eyebrow {
-      margin: 0 0 10px;
-      color: var(--green);
-      font-size: 14px;
-      font-weight: 760;
-      letter-spacing: 0.03em;
+    .sidebar {
+      position: sticky;
+      top: 78px;
+      align-self: start;
     }
 
-    h1 {
-      margin: 0;
-      color: var(--ink);
-      font-size: 46px;
-      line-height: 1.08;
-      font-weight: 780;
-      letter-spacing: 0;
+    .profile-card {
+      padding: 0;
+      background: transparent;
     }
 
-    .cn-name {
-      margin: 10px 0 18px;
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .lead {
-      max-width: 710px;
-      margin: 0 0 20px;
-      color: #2f3b4a;
-      font-size: 18px;
-      line-height: 1.65;
-    }
-
-    .portrait-card {
+    .portrait {
+      width: 164px;
+      height: 164px;
+      margin: 0 auto 15px;
       border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.82);
+      border-radius: 50%;
       overflow: hidden;
-      box-shadow: 0 18px 44px rgba(16, 24, 40, 0.08);
+      background: #f8fbff;
+      box-shadow: 0 0 0 6px #fff, 0 0 0 7px #f0f0f0;
     }
 
-    .portrait-visual {
-      padding: 18px 22px 12px;
-      display: grid;
-      place-items: center;
-      background:
-        linear-gradient(135deg, #f8fbff 0%, #eef5f7 100%);
-      overflow: hidden;
-    }
-
-    .portrait-visual img {
-      width: 126px;
-      aspect-ratio: 4 / 5;
+    .portrait img {
+      width: 100%;
+      height: 100%;
       display: block;
-      border: 1px solid var(--line);
-      border-radius: 10px;
       object-fit: cover;
-      object-position: center top;
-      box-shadow: 0 8px 22px rgba(16, 24, 40, 0.1);
+      object-position: center 16%;
     }
 
-    .profile-heading {
-      padding: 12px 22px 2px;
-      text-align: center;
-      background: #fff;
-    }
-
-    .profile-heading strong {
-      display: block;
+    .profile-name {
+      margin: 0 0 2px;
       color: var(--ink);
-      font-size: 16px;
-      line-height: 1.3;
+      font-size: 19px;
+      line-height: 1.25;
+      text-align: center;
+      font-weight: 700;
     }
 
-    .profile-heading span {
-      display: block;
-      margin-top: 3px;
+    .profile-cn {
+      margin: 0 0 13px;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.25;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .profile-quote {
+      max-width: 190px;
+      margin: 0 auto 18px;
       color: var(--muted);
       font-size: 13px;
+      line-height: 1.55;
+      text-align: center;
     }
 
-    .profile-list {
-      padding: 8px 22px 20px;
-    }
-
-    .profile-row {
+    .profile-links {
       display: grid;
-      grid-template-columns: 80px minmax(0, 1fr);
-      gap: 12px;
-      padding: 8px 0;
-      border-bottom: 1px dashed var(--line);
-      font-size: 14px;
+      gap: 9px;
+      max-width: 210px;
+      margin: 0 auto;
     }
 
-    .profile-row:last-child {
-      border-bottom: 0;
-    }
-
-    .profile-row strong {
+    .profile-link {
+      display: grid;
+      grid-template-columns: 22px minmax(0, 1fr);
+      gap: 9px;
+      align-items: start;
       color: var(--ink);
-      font-weight: 720;
+      font-size: 13.5px;
+      line-height: 1.45;
     }
 
-    .profile-row span {
-      color: var(--muted);
+    .profile-link a {
+      color: var(--ink);
     }
 
-    .layout {
-      max-width: 100%;
+    .profile-icon {
+      width: 18px;
+      height: 18px;
+      display: inline-grid;
+      place-items: center;
+      color: var(--ink);
+      text-align: center;
+      line-height: 1;
+    }
+
+    .profile-icon svg {
+      width: 17px;
+      height: 17px;
+      display: block;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    main {
+      min-width: 0;
     }
 
     section {
-      margin-bottom: 44px;
-      scroll-margin-top: 76px;
+      margin-bottom: 46px;
+      scroll-margin-top: 78px;
+    }
+
+    .about {
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: #343a40;
+      font-size: 36px;
+      line-height: 1.1;
+      font-weight: 700;
     }
 
     h2 {
       margin: 0 0 18px;
-      color: var(--ink);
-      font-size: 24px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      color: #343a40;
+      font-size: 26px;
       line-height: 1.25;
-      font-weight: 760;
-      letter-spacing: 0;
+      font-weight: 700;
     }
 
     h3 {
       margin: 0 0 5px;
-      color: var(--ink);
+      color: #343a40;
       font-size: 17px;
       line-height: 1.45;
-      font-weight: 740;
+      font-weight: 700;
     }
 
     p {
       margin: 0 0 14px;
     }
 
-    strong {
-      color: var(--ink);
-      font-weight: 760;
+    .subtitle {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 17px;
     }
 
-    mark {
-      padding: 0 4px;
-      border-radius: 4px;
-      color: #174d78;
-      background: var(--blue-soft);
-      font-weight: 680;
+    .lead {
+      max-width: 760px;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.65;
     }
 
-    ul {
-      margin: 8px 0 0;
-      padding-left: 20px;
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    li {
-      margin-bottom: 6px;
+    .education-item {
+      display: grid;
+      grid-template-columns: 118px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 2px 0 0;
+    }
+
+    .education-date {
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .education-title {
+      margin: 0 0 3px;
+      color: #343a40;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .education-school {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    .education-details {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 14.5px;
+    }
+
+    .education-details li {
+      margin-bottom: 3px;
+    }
+
+    .education-details strong {
+      color: #2f7f99;
+      font-weight: 700;
+    }
+
+    .service-card {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
     }
 
     .section-note {
@@ -274,57 +330,12 @@
       font-size: 14.5px;
     }
 
-    .edu-card {
-      padding: 20px 22px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: var(--paper);
-    }
-
-    .edu-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .meta {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 3px 9px;
-      border-radius: 999px;
-      background: var(--blue-soft);
-      color: #1d527f;
-      font-size: 13px;
-      white-space: nowrap;
-    }
-
-    .course-list {
-      margin-top: 15px;
-      color: var(--muted);
-      font-size: 14.5px;
-    }
-
     .work-card {
       display: grid;
-      grid-template-columns: 300px minmax(0, 1fr);
-      gap: 24px;
-      align-items: center;
-      padding: 24px 0;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      padding: 22px 0;
       border-top: 1px solid var(--line);
     }
 
@@ -334,13 +345,14 @@
     }
 
     .work-visual {
-      min-height: 170px;
-      border: 1px solid var(--line);
-      border-radius: 9px;
+      min-height: 138px;
+      border: 1px solid #e9ecef;
+      border-radius: 4px;
       display: grid;
       place-items: center;
       padding: 14px;
       color: var(--ink);
+      background: var(--blue-soft);
       font-size: 13px;
       font-weight: 760;
       text-align: center;
@@ -348,7 +360,7 @@
     }
 
     .image-visual {
-      min-height: 190px;
+      min-height: 138px;
       padding: 0;
       overflow: hidden;
       background: #fff;
@@ -360,7 +372,12 @@
     }
 
     .demo-visual {
-      aspect-ratio: 7 / 5;
+      aspect-ratio: 4 / 3;
+      min-height: auto;
+    }
+
+    .education-visual {
+      aspect-ratio: 4 / 3;
       min-height: auto;
     }
 
@@ -369,20 +386,8 @@
       height: 100%;
       display: block;
       object-fit: contain;
-      padding: 10px;
+      padding: 8px;
       background: #fff;
-    }
-
-    .visual-blue {
-      background: var(--blue-soft);
-    }
-
-    .visual-green {
-      background: var(--green-soft);
-    }
-
-    .visual-coral {
-      background: var(--coral-soft);
     }
 
     .work-title {
@@ -393,19 +398,38 @@
     }
 
     .work-role {
-      margin: 4px 0 8px;
+      margin: 5px 0 10px;
       color: var(--muted);
       font-size: 14px;
     }
 
+    .highlight {
+      margin: 0 0 10px;
+      padding: 0;
+      border-left: 0;
+      border-radius: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    .highlight strong {
+      color: #2f7f99;
+    }
+
     .work-desc {
-      margin: 0 0 9px;
-      color: #3c4654;
+      margin: 0 0 10px;
+      color: var(--text);
     }
 
     .work-desc strong,
-    .practice-card strong.inline {
+    .service-card strong.inline {
       color: var(--blue);
+    }
+
+    .service-card strong.inline {
+      display: inline;
+      margin-bottom: 0;
     }
 
     .tag-row {
@@ -417,8 +441,8 @@
     .tag {
       padding: 2px 8px;
       border-radius: 999px;
-      background: #f2f4f7;
-      color: #475467;
+      background: #f6f7f8;
+      color: #5f676d;
       font-size: 12.5px;
     }
 
@@ -431,65 +455,45 @@
 
     .award-list li {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 120px;
-      gap: 18px;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
       margin: 0;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--line);
+      padding: 14px 0;
     }
 
-    .award-title {
-      color: var(--text);
+    .award-icon {
+      width: 28px;
+      text-align: center;
+      font-size: 21px;
+      line-height: 1.35;
     }
 
-    .award-meta {
+    .award-main {
+      color: #343a40;
+      font-size: 17px;
+      font-weight: 760;
+      line-height: 1.45;
+    }
+
+    .award-detail {
       color: var(--muted);
-      font-size: 14px;
-      text-align: right;
+      font-size: 16px;
+      line-height: 1.45;
     }
 
-    .side-panel {
-      position: sticky;
-      top: 74px;
-    }
-
-    .mini-card {
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: var(--paper);
-      margin-bottom: 16px;
-    }
-
-    .mini-card h3 {
-      font-size: 15px;
-      margin-bottom: 10px;
-    }
-
-    .practice {
+    .service-grid {
       display: grid;
       gap: 14px;
     }
 
-    .practice-card {
-      padding: 17px 18px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: var(--paper);
-    }
-
-    .practice-card strong {
+    .service-card strong {
       display: block;
       color: var(--ink);
       margin-bottom: 5px;
     }
 
-    .practice-card span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .practice-card p {
+    .service-card p {
       margin: 0;
       color: #3c4654;
     }
@@ -540,20 +544,22 @@
       }
 
       .page {
+        display: block;
         padding: 24px 22px 54px;
       }
 
-      .hero,
-      .layout {
-        grid-template-columns: 1fr;
+      .sidebar {
+        position: static;
+        margin-bottom: 32px;
+      }
+
+      .profile-card {
+        max-width: 360px;
+        margin: 0 auto;
       }
 
       h1 {
         font-size: 36px;
-      }
-
-      .side-panel {
-        position: static;
       }
     }
 
@@ -575,24 +581,9 @@
       }
 
       .work-card,
-      .award-list li,
-      .edu-head,
+      .education-item,
       .role-line {
         grid-template-columns: 1fr;
-      }
-
-      .framework-visual {
-        min-height: auto;
-        aspect-ratio: 1 / 1;
-      }
-
-      .demo-visual {
-        min-height: auto;
-        aspect-ratio: 7 / 5;
-      }
-
-      .edu-head {
-        display: grid;
       }
 
       .role-line {
@@ -600,8 +591,15 @@
         gap: 2px;
       }
 
-      .award-meta {
-        text-align: left;
+      .demo-visual,
+      .education-visual {
+        min-height: auto;
+        aspect-ratio: 4 / 3;
+      }
+
+      .framework-visual {
+        min-height: auto;
+        aspect-ratio: 1 / 1;
       }
     }
   </style>
@@ -614,255 +612,260 @@
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#education">Education</a>
-        <a href="#works">Research</a>
+        <a href="#research">Research</a>
         <a href="#awards">Awards</a>
-        <a href="#practice">Service</a>
+        <a href="#service">Service</a>
       </div>
     </nav>
   </header>
 
-  <main class="page" id="top">
-    <section class="hero" id="about">
-      <div>
-        <h1>Yuting Yang</h1>
-        <div class="cn-name">杨宇婷 · Chongqing University</div>
-        <p class="lead">
-          I am an undergraduate student in <strong>Data Science and Big Data Technology</strong> at the School of Big Data
-          & Software Engineering, Chongqing University. My interests lie in <mark>AI for education</mark>,
-          <mark>learning analytics</mark>, <mark>knowledge tracing</mark>, large language models,
-          and trustworthy intelligent systems.
-        </p>
-        <p>
-          My recent projects connect <strong>multi-agent reasoning</strong>, misinformation detection,
-          multimodal learning, and <strong>LLM-based educational data generation</strong>. For graduate study,
-          I hope to build intelligent systems that model learning processes, support educational decision-making,
-          and remain reliable in real scenarios.
-        </p>
-      </div>
-
-      <aside class="portrait-card" aria-label="Portrait">
-        <div class="portrait-visual">
+  <div class="page" id="top">
+    <aside class="sidebar">
+      <div class="profile-card">
+        <div class="portrait">
           <img src="assets/profile.jpg" alt="Portrait of Yuting Yang">
         </div>
-        <div class="profile-heading">
-          <strong>Yuting Yang</strong>
-          <span>Undergraduate · Chongqing University</span>
+        <h1 class="profile-name">Yuting Yang</h1>
+        <div class="profile-cn">杨宇婷</div>
+        <p class="profile-quote">Undergraduate student interested in AI for education and learning analytics.</p>
+        <div class="profile-links">
+          <div class="profile-link">
+            <span class="profile-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 21s7-5.2 7-11a7 7 0 0 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </span>
+            <span>Chongqing, China</span>
+          </div>
+          <div class="profile-link">
+            <span class="profile-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V9l7-4 7 4v12"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01"/><path d="M15 10h.01"/></svg>
+            </span>
+            <span>Chongqing University</span>
+          </div>
+          <div class="profile-link">
+            <span class="profile-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M4 7h12a3 3 0 0 1 0 6H4"/><path d="M4 13h14a3 3 0 0 1 0 6H4"/></svg>
+            </span>
+            <span>School of Big Data & Software Engineering</span>
+          </div>
+          <div class="profile-link">
+            <span class="profile-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+            </span>
+            <span><a href="mailto:yyyyyt@stu.cqu.edu.cn">Email</a></span>
+          </div>
+          <div class="profile-link">
+            <span class="profile-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 7h10"/><path d="M7 12h7"/><path d="M7 17h4"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>
+            </span>
+            <span><a href="https://github.com/y-yyyt" target="_blank">GitHub</a></span>
+          </div>
         </div>
-        <div class="profile-list">
-          <div class="profile-row">
-            <strong>School</strong>
-            <span>Big Data & Software Engineering</span>
-          </div>
-          <div class="profile-row">
-            <strong>Major</strong>
-            <span>Data Science and Big Data Technology</span>
-          </div>
-          <div class="profile-row">
-            <strong>Ranking</strong>
-            <span>21 / 219, Top 9%</span>
-          </div>
-          <div class="profile-row">
-            <strong>Email</strong>
-            <span>yyyyyt@stu.cqu.edu.cn</span>
-          </div>
-          <div class="profile-row">
-            <strong>GitHub</strong>
-            <span><a href="https://github.com/y-yyyt" target="_blank">y-yyyt</a></span>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <div class="layout">
-      <div>
-        <section id="education">
-          <h2>Education</h2>
-          <div class="edu-card">
-            <div class="edu-head">
-              <div>
-                <h3>Chongqing University</h3>
-                <div class="meta">B.Eng. in Data Science and Big Data Technology, 2023 - 2027</div>
-              </div>
-              <div class="meta">Chongqing, China</div>
-            </div>
-            <div class="pill-row">
-              <span class="pill">Grade Ranking: 21 / 219</span>
-              <span class="pill">Major Ranking: 8 / 55</span>
-              <span class="pill">GPA: 3.6152 / 4.0</span>
-              <span class="pill">CET-6: 524</span>
-            </div>
-            <div class="course-list">
-              <strong>Selected Courses:</strong>
-              Introduction to Data Science 99, Statistical Analysis 98, Mathematical Experiment 96,
-              Introduction to Software Engineering 96, Machine Learning 95, Deep Learning 95.
-            </div>
-          </div>
-        </section>
-
-        <section id="works">
-          <h2>Selected Works</h2>
-          <p class="section-note">
-            Research and project experiences are presented in a publication-style format to make the research question,
-            method, and personal contribution easy to scan.
-          </p>
-
-          <article class="work-card">
-            <div class="work-visual image-visual framework-visual">
-              <img src="assets/multi_agent_framework.png" alt="Framework of the multi-agent fake news detection system">
-            </div>
-            <div>
-              <div class="work-title">Multi-Agent Fake News Detection System with Reflection and Iterative Learning</div>
-              <div class="work-role">Project Leader · Advisor: Prof. Min Gao</div>
-              <p class="work-desc">
-                Proposed a <strong>CrewAI-based detection framework</strong> that combines fast judgment,
-                dynamic fact-checking, comprehensive reasoning, reflection triggers, and structured experience memory.
-                The system improved <strong>F1-scores on PolitiFact and GossipCop</strong> compared with several
-                baseline methods.
-              </p>
-              <div class="tag-row">
-                <span class="tag">Multi-agent systems</span>
-                <span class="tag">Reflection</span>
-                <span class="tag">Experience memory</span>
-                <span class="tag">Fake news detection</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card">
-            <div class="work-visual image-visual demo-visual">
-              <img src="assets/spectra_demo.png" alt="Interface example of the fake news detection system">
-            </div>
-            <div>
-              <div class="work-title">Multimodal Fake News Detection Based on MoE and Knowledge-enhanced Reasoning</div>
-              <div class="work-role">Core Member · Advisor: Prof. Min Gao</div>
-              <p class="work-desc">
-                Participated in designing a multimodal detection method with <strong>expert routing</strong>,
-                decision-making, retrieval-augmented reasoning, and text-image-audio-video expert models.
-                The model achieved <strong>88.11% accuracy</strong> and <strong>84.60% F1-score</strong>
-                on the Weibo-21 dataset.
-              </p>
-              <div class="tag-row">
-                <span class="tag">Multimodal learning</span>
-                <span class="tag">Mixture of Experts</span>
-                <span class="tag">RAG</span>
-                <span class="tag">Knowledge reasoning</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="work-card">
-            <div class="work-visual visual-coral">AI for<br>Education</div>
-            <div>
-              <div class="work-title">LLM-based Virtual Student Response Generation and Performance Prediction</div>
-              <div class="work-role">Independent Project</div>
-              <p class="work-desc">
-                Explored <strong>LLM-based generation of virtual student response records</strong> for educational
-                modeling scenarios with limited or sensitive real data. The pipeline includes student profile construction,
-                response behavior simulation, <strong>ASSISTments-format alignment</strong>, and pyKT-based
-                knowledge tracing experiments.
-              </p>
-              <div class="tag-row">
-                <span class="tag">Educational data</span>
-                <span class="tag">Student modeling</span>
-                <span class="tag">Knowledge tracing</span>
-                <span class="tag">Synthetic data</span>
-              </div>
-            </div>
-          </article>
-        </section>
-
-        <section id="awards">
-          <h2>Awards & Competitions</h2>
-          <ul class="award-list">
-            <li>
-              <span class="award-title">National First Prize, China College Students Engineering Practice and Innovation Ability Competition</span>
-              <span class="award-meta">2025</span>
-            </li>
-            <li>
-              <span class="award-title">National Second Prize, China College Students Service Outsourcing Innovation and Entrepreneurship Competition</span>
-              <span class="award-meta">2025</span>
-            </li>
-            <li>
-              <span class="award-title">Honorable Mention, Mathematical Contest in Modeling</span>
-              <span class="award-meta">2025</span>
-            </li>
-            <li>
-              <span class="award-title">National Gold Award, STEAM Rural Classroom Caterpillar Foundation Special Program</span>
-              <span class="award-meta">2024</span>
-            </li>
-            <li>
-              <span class="award-title">Bronze Award and Best Aesthetic Education Award, Nippon Paint Rural Teaching Program</span>
-              <span class="award-meta">2025</span>
-            </li>
-            <li>
-              <span class="award-title">Outstanding Student Cadre, Outstanding Student, Advanced Individual in Scientific and Technological Innovation</span>
-              <span class="award-meta">2024 - 2025</span>
-            </li>
-            <li>
-              <span class="award-title">Comprehensive Scholarship</span>
-              <span class="award-meta">2024 - 2025</span>
-            </li>
-          </ul>
-        </section>
-
-        <section id="practice">
-          <h2>Practice & Service</h2>
-          <div class="practice">
-            <div class="practice-card">
-              <strong>Student Leadership</strong>
-              <ul class="compact-list">
-                <li>
-                  <div class="role-line">
-                    <strong>Youth League Branch Secretary, Class 2, Data Science and Big Data Technology 2023</strong>
-                    <span class="role-time">2024.9 - Present</span>
-                  </div>
-                  <p>
-                    Led League affairs and themed activities; the activity on the spirit of the War of Resistance
-                    was selected as a <strong class="inline">Chongqing University Model League Day Activity</strong>, with excellent evaluations
-                    for three consecutive semesters.
-                  </p>
-                </li>
-                <li>
-                  <div class="role-line">
-                    <strong>Director, Practice Department, Student Union</strong>
-                    <span class="role-time">2024.9 - 2025.6</span>
-                  </div>
-                  <p>
-                    Organized <strong class="inline">10+ volunteer and campus activities</strong>, reported
-                    <strong class="inline">4,000+ volunteer hours</strong>, supported social practice project management,
-                    and was awarded Advanced Individual of Chongqing University Student Union.
-                  </p>
-                </li>
-                <li>
-                  <div class="role-line">
-                    <strong>Deputy Director, External Relations Department, Youth League Student Office</strong>
-                    <span class="role-time">2024.9 - 2025.6</span>
-                  </div>
-                  <p>
-                    Organized school-level activities covering <strong class="inline">1,000+ participants</strong> and
-                    co-wrote a summer social practice report that received a university-level
-                    <strong class="inline">Outstanding Research Report</strong> award.
-                  </p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="practice-card">
-              <strong>Volunteer Teaching and Digital Literacy Education</strong>
-              <p>
-                Led two rural education programs that brought <strong class="inline">programming, STEAM learning,
-                artificial intelligence, and digital literacy</strong> to students in Sichuan and Xinjiang. The teams won
-                the <strong class="inline">only national Gold Award</strong> in the STEAM Rural Classroom Zhixing Program
-                and a national Bronze Award in the Nippon Paint Rural Teaching Program; related work was reported by
-                <strong class="inline">People's Daily</strong>, Chongqing Youth League, and other mainstream media.
-              </p>
-            </div>
-          </div>
-        </section>
       </div>
+    </aside>
 
-    </div>
+    <main>
+      <section class="about" id="about">
+        <h2>About Me</h2>
+        <p class="subtitle">Data Science & Big Data Technology · AI for Education · Trustworthy AI</p>
+        <p class="lead">
+          I am an undergraduate student at <strong>Chongqing University</strong>, majoring in
+          <strong>Data Science and Big Data Technology</strong>. My academic interests center on
+          <mark>AI for education</mark>, especially how data-driven and large-model methods can be used to
+          understand learning behavior, generate educational data, and support reliable learning analytics.
+        </p>
+        <p>
+          My previous research has focused on <strong>trustworthy AI</strong>, including multi-agent reasoning,
+          misinformation detection, multimodal learning, and knowledge-enhanced reasoning. These experiences shaped
+          my current research direction: building educational AI systems that are not only effective, but also
+          interpretable, robust, and useful in real teaching and learning scenarios.
+        </p>
+        <p>
+          Looking ahead, I hope to continue exploring <strong>learning analytics</strong>,
+          <strong>knowledge tracing</strong>, and <strong>large language models for education</strong>, with the goal of
+          developing intelligent systems that better model learners, support educational decision-making, and make
+          personalized learning more trustworthy.
+        </p>
+      </section>
 
-  </main>
+      <section id="education">
+        <h2>Education</h2>
+        <div class="education-item">
+          <div class="education-date">2023 - 2027</div>
+          <div>
+            <div class="education-title">B.Eng. in Data Science and Big Data Technology</div>
+            <div class="education-school">Chongqing University, Chongqing, China</div>
+            <ul class="education-details">
+              <li>Grade Ranking: <strong>21 / 219</strong>; Major Ranking: <strong>8 / 55</strong></li>
+              <li>GPA: <strong>3.6152 / 4.0</strong>; CET-6: <strong>524</strong></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="research">
+        <h2>Research</h2>
+        <p class="section-note">
+          Research projects are organized as academic-style entries, emphasizing research questions,
+          personal contribution, methods, and outcomes.
+        </p>
+
+        <article class="work-card">
+          <div class="work-visual image-visual framework-visual">
+            <img src="assets/multi_agent_framework.png" alt="Framework of the multi-agent fake news detection system">
+          </div>
+          <div>
+            <div class="work-title">Multi-Agent Fake News Detection System with Reflection and Iterative Learning</div>
+            <div class="work-role">Project Leader · Advisor: Prof. Min Gao</div>
+            <p class="highlight"><strong>Highlight:</strong> A multi-agent detection workflow with reflection and memory for more reliable misinformation detection.</p>
+            <p class="work-desc">
+              Proposed a <strong>CrewAI-based detection framework</strong> that combines fast judgment,
+              dynamic fact-checking, comprehensive reasoning, reflection triggers, and structured experience memory.
+              The system improved <strong>F1-scores on PolitiFact and GossipCop</strong> compared with several baseline methods.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Multi-agent systems</span>
+              <span class="tag">Reflection</span>
+              <span class="tag">Experience memory</span>
+              <span class="tag">Fake news detection</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-visual image-visual demo-visual">
+            <img src="assets/spectra_demo.png" alt="Interface example of the fake news detection system">
+          </div>
+          <div>
+            <div class="work-title">Multimodal Fake News Detection Based on MoE and Knowledge-enhanced Reasoning</div>
+            <div class="work-role">Core Member · Advisor: Prof. Min Gao</div>
+            <p class="highlight"><strong>Highlight:</strong> A multimodal expert-collaboration system for text, image, audio, and video misinformation signals.</p>
+            <p class="work-desc">
+              Participated in designing a multimodal detection method with <strong>expert routing</strong>,
+              decision-making, retrieval-augmented reasoning, and text-image-audio-video expert models.
+              The model achieved <strong>88.11% accuracy</strong> and <strong>84.60% F1-score</strong> on the Weibo-21 dataset.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Multimodal learning</span>
+              <span class="tag">Mixture of Experts</span>
+              <span class="tag">RAG</span>
+              <span class="tag">Knowledge reasoning</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-visual image-visual education-visual">
+            <img src="assets/virtual_student_pipeline.png" alt="Pipeline for virtual student response generation and performance prediction">
+          </div>
+          <div>
+            <div class="work-title">LLM-based Virtual Student Response Generation and Performance Prediction</div>
+            <div class="work-role">Independent Project</div>
+            <p class="highlight"><strong>Highlight:</strong> Generating virtual student response records to support knowledge tracing under limited real data.</p>
+            <p class="work-desc">
+              Explored <strong>LLM-based generation of virtual student response records</strong> for educational modeling
+              scenarios with limited or sensitive real data. The pipeline includes student profile construction,
+              response behavior simulation, <strong>ASSISTments-format alignment</strong>, and pyKT-based knowledge tracing experiments.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Educational data</span>
+              <span class="tag">Student modeling</span>
+              <span class="tag">Knowledge tracing</span>
+              <span class="tag">Synthetic data</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section id="awards">
+        <h2>Awards & Competitions</h2>
+        <ul class="award-list">
+          <li>
+            <span class="award-icon" aria-hidden="true">&#127942;</span>
+            <span><span class="award-main">National First Prize</span>, China College Students Engineering Practice and Innovation Ability Competition <span class="award-detail">(2025)</span></span>
+          </li>
+          <li>
+            <span class="award-icon" aria-hidden="true">&#129352;</span>
+            <span><span class="award-main">National Second Prize</span>, China College Students Service Outsourcing Innovation and Entrepreneurship Competition <span class="award-detail">(2025)</span></span>
+          </li>
+          <li>
+            <span class="award-icon" aria-hidden="true">&#127894;</span>
+            <span><span class="award-main">Honorable Mention</span>, Mathematical Contest in Modeling <span class="award-detail">(2025)</span></span>
+          </li>
+          <li>
+            <span class="award-icon" aria-hidden="true">&#11088;</span>
+            <span><span class="award-main">National Gold Award</span>, STEAM Rural Classroom Caterpillar Foundation Special Program <span class="award-detail">(2024)</span></span>
+          </li>
+          <li>
+            <span class="award-icon" aria-hidden="true">&#129353;</span>
+            <span><span class="award-main">Bronze Award and Best Aesthetic Education Award</span>, Nippon Paint Rural Teaching Program <span class="award-detail">(2025)</span></span>
+          </li>
+          <li>
+            <span class="award-icon" aria-hidden="true">&#127891;</span>
+            <span><span class="award-main">Outstanding Student Cadre, Outstanding Student, Advanced Individual in Scientific and Technological Innovation</span> <span class="award-detail">(Chongqing University, 2024 - 2025)</span></span>
+          </li>
+          <li>
+            <span class="award-icon" aria-hidden="true">&#127891;</span>
+            <span><span class="award-main">Comprehensive Scholarship</span> <span class="award-detail">(Chongqing University, 2024 - 2025)</span></span>
+          </li>
+        </ul>
+      </section>
+
+      <section id="service">
+        <h2>Service</h2>
+        <div class="service-grid">
+          <div class="service-card">
+            <strong>Student Leadership</strong>
+            <ul class="compact-list">
+              <li>
+                <div class="role-line">
+                  <strong>Youth League Branch Secretary, Class 2, Data Science and Big Data Technology 2023</strong>
+                  <span class="role-time">2024.9 - Present</span>
+                </div>
+                <p>
+                  Led League affairs and themed activities; the activity on the spirit of the War of Resistance
+                  was selected as a <strong class="inline">Chongqing University Model League Day Activity</strong>, with excellent evaluations
+                  for three consecutive semesters.
+                </p>
+              </li>
+              <li>
+                <div class="role-line">
+                  <strong>Director, Practice Department, Student Union</strong>
+                  <span class="role-time">2024.9 - 2025.6</span>
+                </div>
+                <p>
+                  Organized <strong class="inline">10+ volunteer and campus activities</strong>, reported
+                  <strong class="inline">4,000+ volunteer hours</strong>, supported social practice project management,
+                  and was awarded Advanced Individual of Chongqing University Student Union.
+                </p>
+              </li>
+              <li>
+                <div class="role-line">
+                  <strong>Deputy Director, External Relations Department, Youth League Student Office</strong>
+                  <span class="role-time">2024.9 - 2025.6</span>
+                </div>
+                <p>
+                  Organized school-level activities covering <strong class="inline">1,000+ participants</strong> and
+                  co-wrote a summer social practice report that received a university-level
+                  <strong class="inline">Outstanding Research Report</strong> award.
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="service-card">
+            <strong>Volunteer Teaching and Digital Literacy Education</strong>
+            <p>
+              Led two rural education programs that brought <strong class="inline">programming, STEAM learning,
+              artificial intelligence, and digital literacy</strong> to students in Sichuan and Xinjiang. The teams won
+              the <strong class="inline">only national Gold Award</strong> in the STEAM Rural Classroom Zhixing Program
+              and a national Bronze Award in the Nippon Paint Rural Teaching Program; related work was reported by
+              <strong class="inline">People's Daily</strong>, Chongqing Youth League, and other mainstream media.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
 </body>
 </html>
+
