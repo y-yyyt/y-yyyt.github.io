@@ -32,7 +32,10 @@
     body {
       margin: 0;
       color: var(--text);
-      background: #fff;
+      background:
+        linear-gradient(180deg, #fbfdff 0, #fff 320px),
+        radial-gradient(circle at 10% 8%, rgba(82, 173, 200, 0.06), transparent 28%),
+        #fff;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, "Microsoft YaHei", sans-serif;
       font-size: 16px;
       line-height: 1.6;
@@ -92,6 +95,12 @@
       font-size: 14px;
     }
 
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
     .nav-links a {
       color: var(--muted);
     }
@@ -101,10 +110,28 @@
       text-decoration: none;
     }
 
+    .lang-toggle {
+      border: 1px solid #d7e6eb;
+      border-radius: 999px;
+      padding: 4px 11px;
+      color: #2f7f99;
+      background: #f8fcfd;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.35;
+      cursor: pointer;
+    }
+
+    .lang-toggle:hover {
+      border-color: var(--blue);
+      background: var(--blue-soft);
+    }
+
     .page {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 42px 28px 72px;
+      padding: 22px 28px 72px;
       display: grid;
       grid-template-columns: 220px minmax(0, 1fr);
       gap: 58px;
@@ -215,12 +242,12 @@
     }
 
     section {
-      margin-bottom: 46px;
+      margin-bottom: 38px;
       scroll-margin-top: 78px;
     }
 
     .about {
-      padding-bottom: 24px;
+      padding-bottom: 18px;
       border-bottom: 1px solid var(--line);
     }
 
@@ -397,12 +424,6 @@
       line-height: 1.38;
     }
 
-    .work-role {
-      margin: 5px 0 10px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
     .highlight {
       margin: 0 0 10px;
       padding: 0;
@@ -543,6 +564,10 @@
         display: none;
       }
 
+      .nav-actions {
+        gap: 0;
+      }
+
       .page {
         display: block;
         padding: 24px 22px 54px;
@@ -609,12 +634,15 @@
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
       <a class="brand" href="#top">Yuting Yang</a>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#research">Research</a>
-        <a href="#awards">Awards</a>
-        <a href="#service">Service</a>
+      <div class="nav-actions">
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#education">Education</a>
+          <a href="#research">Research</a>
+          <a href="#awards">Awards</a>
+          <a href="#service">Service</a>
+        </div>
+        <button class="lang-toggle" type="button" aria-label="Switch language" aria-pressed="false">中文</button>
       </div>
     </nav>
   </header>
@@ -666,7 +694,6 @@
     <main>
       <section class="about" id="about">
         <h2>About Me</h2>
-        <p class="subtitle">Data Science & Big Data Technology · AI for Education · Trustworthy AI</p>
         <p class="lead">
           I am an undergraduate student at <strong>Chongqing University</strong>, majoring in
           <strong>Data Science and Big Data Technology</strong>. My academic interests center on
@@ -704,10 +731,6 @@
 
       <section id="research">
         <h2>Research</h2>
-        <p class="section-note">
-          Research projects are organized as academic-style entries, emphasizing research questions,
-          personal contribution, methods, and outcomes.
-        </p>
 
         <article class="work-card">
           <div class="work-visual image-visual framework-visual">
@@ -715,7 +738,6 @@
           </div>
           <div>
             <div class="work-title">Multi-Agent Fake News Detection System with Reflection and Iterative Learning</div>
-            <div class="work-role">Project Leader · Advisor: Prof. Min Gao</div>
             <p class="highlight"><strong>Highlight:</strong> A multi-agent detection workflow with reflection and memory for more reliable misinformation detection.</p>
             <p class="work-desc">
               Proposed a <strong>CrewAI-based detection framework</strong> that combines fast judgment,
@@ -737,7 +759,6 @@
           </div>
           <div>
             <div class="work-title">Multimodal Fake News Detection Based on MoE and Knowledge-enhanced Reasoning</div>
-            <div class="work-role">Core Member · Advisor: Prof. Min Gao</div>
             <p class="highlight"><strong>Highlight:</strong> A multimodal expert-collaboration system for text, image, audio, and video misinformation signals.</p>
             <p class="work-desc">
               Participated in designing a multimodal detection method with <strong>expert routing</strong>,
@@ -759,7 +780,6 @@
           </div>
           <div>
             <div class="work-title">LLM-based Virtual Student Response Generation and Performance Prediction</div>
-            <div class="work-role">Independent Project</div>
             <p class="highlight"><strong>Highlight:</strong> Generating virtual student response records to support knowledge tracing under limited real data.</p>
             <p class="work-desc">
               Explored <strong>LLM-based generation of virtual student response records</strong> for educational modeling
@@ -866,6 +886,160 @@
       </section>
     </main>
   </div>
+  <script>
+    const i18n = {
+      en: {
+        ".nav-links a[href='#about']": "About",
+        ".nav-links a[href='#education']": "Education",
+        ".nav-links a[href='#research']": "Research",
+        ".nav-links a[href='#awards']": "Awards",
+        ".nav-links a[href='#service']": "Service",
+        ".profile-quote": "Undergraduate student interested in AI for education and learning analytics.",
+        ".profile-link:nth-child(1) span:last-child": "Chongqing, China",
+        ".profile-link:nth-child(2) span:last-child": "Chongqing University",
+        ".profile-link:nth-child(3) span:last-child": "School of Big Data & Software Engineering",
+        ".profile-link:nth-child(4) span:last-child a": "Email",
+        ".profile-link:nth-child(5) span:last-child a": "GitHub",
+        "#about h2": "About Me",
+        ".about .lead": "I am an undergraduate student at <strong>Chongqing University</strong>, majoring in <strong>Data Science and Big Data Technology</strong>. My academic interests center on <mark>AI for education</mark>, especially how data-driven and large-model methods can be used to understand learning behavior, generate educational data, and support reliable learning analytics.",
+        ".about p:nth-of-type(3)": "My previous research has focused on <strong>trustworthy AI</strong>, including multi-agent reasoning, misinformation detection, multimodal learning, and knowledge-enhanced reasoning. These experiences shaped my current research direction: building educational AI systems that are not only effective, but also interpretable, robust, and useful in real teaching and learning scenarios.",
+        ".about p:nth-of-type(4)": "Looking ahead, I hope to continue exploring <strong>learning analytics</strong>, <strong>knowledge tracing</strong>, and <strong>large language models for education</strong>, with the goal of developing intelligent systems that better model learners, support educational decision-making, and make personalized learning more trustworthy.",
+        "#education h2": "Education",
+        ".education-title": "B.Eng. in Data Science and Big Data Technology",
+        ".education-school": "Chongqing University, Chongqing, China",
+        ".education-details li:nth-child(1)": "Grade Ranking: <strong>21 / 219</strong>; Major Ranking: <strong>8 / 55</strong>",
+        ".education-details li:nth-child(2)": "GPA: <strong>3.6152 / 4.0</strong>; CET-6: <strong>524</strong>",
+        "#research h2": "Research",
+        "#research .work-card:nth-of-type(1) .work-title": "Multi-Agent Fake News Detection System with Reflection and Iterative Learning",
+        "#research .work-card:nth-of-type(1) .highlight": "<strong>Highlight:</strong> A multi-agent detection workflow with reflection and memory for more reliable misinformation detection.",
+        "#research .work-card:nth-of-type(1) .work-desc": "Proposed a <strong>CrewAI-based detection framework</strong> that combines fast judgment, dynamic fact-checking, comprehensive reasoning, reflection triggers, and structured experience memory. The system improved <strong>F1-scores on PolitiFact and GossipCop</strong> compared with several baseline methods.",
+        "#research .work-card:nth-of-type(1) .tag:nth-child(1)": "Multi-agent systems",
+        "#research .work-card:nth-of-type(1) .tag:nth-child(2)": "Reflection",
+        "#research .work-card:nth-of-type(1) .tag:nth-child(3)": "Experience memory",
+        "#research .work-card:nth-of-type(1) .tag:nth-child(4)": "Fake news detection",
+        "#research .work-card:nth-of-type(2) .work-title": "Multimodal Fake News Detection Based on MoE and Knowledge-enhanced Reasoning",
+        "#research .work-card:nth-of-type(2) .highlight": "<strong>Highlight:</strong> A multimodal expert-collaboration system for text, image, audio, and video misinformation signals.",
+        "#research .work-card:nth-of-type(2) .work-desc": "Participated in designing a multimodal detection method with <strong>expert routing</strong>, decision-making, retrieval-augmented reasoning, and text-image-audio-video expert models. The model achieved <strong>88.11% accuracy</strong> and <strong>84.60% F1-score</strong> on the Weibo-21 dataset.",
+        "#research .work-card:nth-of-type(2) .tag:nth-child(1)": "Multimodal learning",
+        "#research .work-card:nth-of-type(2) .tag:nth-child(2)": "Mixture of Experts",
+        "#research .work-card:nth-of-type(2) .tag:nth-child(3)": "RAG",
+        "#research .work-card:nth-of-type(2) .tag:nth-child(4)": "Knowledge reasoning",
+        "#research .work-card:nth-of-type(3) .work-title": "LLM-based Virtual Student Response Generation and Performance Prediction",
+        "#research .work-card:nth-of-type(3) .highlight": "<strong>Highlight:</strong> Generating virtual student response records to support knowledge tracing under limited real data.",
+        "#research .work-card:nth-of-type(3) .work-desc": "Explored <strong>LLM-based generation of virtual student response records</strong> for educational modeling scenarios with limited or sensitive real data. The pipeline includes student profile construction, response behavior simulation, <strong>ASSISTments-format alignment</strong>, and pyKT-based knowledge tracing experiments.",
+        "#research .work-card:nth-of-type(3) .tag:nth-child(1)": "Educational data",
+        "#research .work-card:nth-of-type(3) .tag:nth-child(2)": "Student modeling",
+        "#research .work-card:nth-of-type(3) .tag:nth-child(3)": "Knowledge tracing",
+        "#research .work-card:nth-of-type(3) .tag:nth-child(4)": "Synthetic data",
+        "#awards h2": "Awards & Competitions",
+        ".award-list li:nth-child(1) > span:last-child": "<span class=\"award-main\">National First Prize</span>, China College Students Engineering Practice and Innovation Ability Competition <span class=\"award-detail\">(2025)</span>",
+        ".award-list li:nth-child(2) > span:last-child": "<span class=\"award-main\">National Second Prize</span>, China College Students Service Outsourcing Innovation and Entrepreneurship Competition <span class=\"award-detail\">(2025)</span>",
+        ".award-list li:nth-child(3) > span:last-child": "<span class=\"award-main\">Honorable Mention</span>, Mathematical Contest in Modeling <span class=\"award-detail\">(2025)</span>",
+        ".award-list li:nth-child(4) > span:last-child": "<span class=\"award-main\">National Gold Award</span>, STEAM Rural Classroom Caterpillar Foundation Special Program <span class=\"award-detail\">(2024)</span>",
+        ".award-list li:nth-child(5) > span:last-child": "<span class=\"award-main\">Bronze Award and Best Aesthetic Education Award</span>, Nippon Paint Rural Teaching Program <span class=\"award-detail\">(2025)</span>",
+        ".award-list li:nth-child(6) > span:last-child": "<span class=\"award-main\">Outstanding Student Cadre, Outstanding Student, Advanced Individual in Scientific and Technological Innovation</span> <span class=\"award-detail\">(Chongqing University, 2024 - 2025)</span>",
+        ".award-list li:nth-child(7) > span:last-child": "<span class=\"award-main\">Comprehensive Scholarship</span> <span class=\"award-detail\">(Chongqing University, 2024 - 2025)</span>",
+        "#service h2": "Service",
+        "#service .service-card:nth-child(1) > strong": "Student Leadership",
+        "#service .compact-list li:nth-child(1) .role-line strong": "Youth League Branch Secretary, Class 2, Data Science and Big Data Technology 2023",
+        "#service .compact-list li:nth-child(1) p": "Led League affairs and themed activities; the activity on the spirit of the War of Resistance was selected as a <strong class=\"inline\">Chongqing University Model League Day Activity</strong>, with excellent evaluations for three consecutive semesters.",
+        "#service .compact-list li:nth-child(2) .role-line strong": "Director, Practice Department, Student Union",
+        "#service .compact-list li:nth-child(2) p": "Organized <strong class=\"inline\">10+ volunteer and campus activities</strong>, reported <strong class=\"inline\">4,000+ volunteer hours</strong>, supported social practice project management, and was awarded Advanced Individual of Chongqing University Student Union.",
+        "#service .compact-list li:nth-child(3) .role-line strong": "Deputy Director, External Relations Department, Youth League Student Office",
+        "#service .compact-list li:nth-child(3) p": "Organized school-level activities covering <strong class=\"inline\">1,000+ participants</strong> and co-wrote a summer social practice report that received a university-level <strong class=\"inline\">Outstanding Research Report</strong> award.",
+        "#service .service-card:nth-child(2) > strong": "Volunteer Teaching and Digital Literacy Education",
+        "#service .service-card:nth-child(2) p": "Led two rural education programs that brought <strong class=\"inline\">programming, STEAM learning, artificial intelligence, and digital literacy</strong> to students in Sichuan and Xinjiang. The teams won the <strong class=\"inline\">only national Gold Award</strong> in the STEAM Rural Classroom Zhixing Program and a national Bronze Award in the Nippon Paint Rural Teaching Program; related work was reported by <strong class=\"inline\">People's Daily</strong>, Chongqing Youth League, and other mainstream media."
+      },
+      zh: {
+        ".nav-links a[href='#about']": "关于",
+        ".nav-links a[href='#education']": "教育经历",
+        ".nav-links a[href='#research']": "科研经历",
+        ".nav-links a[href='#awards']": "获奖竞赛",
+        ".nav-links a[href='#service']": "服务实践",
+        ".profile-quote": "关注 AI for Education 与学习分析的本科生。",
+        ".profile-link:nth-child(1) span:last-child": "中国重庆",
+        ".profile-link:nth-child(2) span:last-child": "重庆大学",
+        ".profile-link:nth-child(3) span:last-child": "大数据与软件学院",
+        ".profile-link:nth-child(4) span:last-child a": "邮箱",
+        ".profile-link:nth-child(5) span:last-child a": "GitHub",
+        "#about h2": "关于我",
+        ".about .lead": "我是<strong>重庆大学</strong><strong>数据科学与大数据技术</strong>专业本科生。我的学术兴趣聚焦于 <mark>AI for education</mark>，尤其关注如何利用数据驱动方法和大模型技术理解学习行为、生成教育数据，并支持可靠的学习分析。",
+        ".about p:nth-of-type(3)": "此前我的研究主要围绕<strong>可信人工智能</strong>展开，包括多智能体推理、虚假信息检测、多模态学习和知识增强推理等方向。这些经历进一步明确了我的研究目标：构建既有效又可解释、鲁棒，并能服务真实教学场景的教育智能系统。",
+        ".about p:nth-of-type(4)": "未来，我希望继续探索<strong>学习分析</strong>、<strong>知识追踪</strong>和<strong>面向教育的大语言模型</strong>，发展能够更好建模学习者、支持教育决策并提升个性化学习可信度的智能系统。",
+        "#education h2": "教育经历",
+        ".education-title": "工学学士，数据科学与大数据技术",
+        ".education-school": "重庆大学，中国重庆",
+        ".education-details li:nth-child(1)": "年级排名：<strong>21 / 219</strong>；专业排名：<strong>8 / 55</strong>",
+        ".education-details li:nth-child(2)": "GPA：<strong>3.6152 / 4.0</strong>；CET-6：<strong>524</strong>",
+        "#research h2": "科研经历",
+        "#research .work-card:nth-of-type(1) .work-title": "融合反思与迭代学习的多智能体虚假新闻检测系统",
+        "#research .work-card:nth-of-type(1) .highlight": "<strong>重点：</strong>构建结合反思机制与经验记忆的多智能体检测流程，提升虚假信息识别的可靠性。",
+        "#research .work-card:nth-of-type(1) .work-desc": "提出基于 <strong>CrewAI 的检测框架</strong>，融合快速判断、动态事实核查、综合推理、反思触发和结构化经验记忆等模块。系统在 PolitiFact 和 GossipCop 数据集上的 <strong>F1-score</strong> 相比多种基线方法有所提升。",
+        "#research .work-card:nth-of-type(1) .tag:nth-child(1)": "多智能体系统",
+        "#research .work-card:nth-of-type(1) .tag:nth-child(2)": "反思机制",
+        "#research .work-card:nth-of-type(1) .tag:nth-child(3)": "经验记忆",
+        "#research .work-card:nth-of-type(1) .tag:nth-child(4)": "虚假新闻检测",
+        "#research .work-card:nth-of-type(2) .work-title": "基于 MoE 与知识增强推理的多模态虚假新闻检测",
+        "#research .work-card:nth-of-type(2) .highlight": "<strong>重点：</strong>面向文本、图像、音频和视频信号构建多模态专家协同检测系统。",
+        "#research .work-card:nth-of-type(2) .work-desc": "参与设计融合<strong>专家路由</strong>、决策模块、检索增强推理以及文本-图像-音频-视频专家模型的多模态检测方法。模型在 Weibo-21 数据集上取得 <strong>88.11% 准确率</strong>和 <strong>84.60% F1-score</strong>。",
+        "#research .work-card:nth-of-type(2) .tag:nth-child(1)": "多模态学习",
+        "#research .work-card:nth-of-type(2) .tag:nth-child(2)": "混合专家模型",
+        "#research .work-card:nth-of-type(2) .tag:nth-child(3)": "检索增强生成",
+        "#research .work-card:nth-of-type(2) .tag:nth-child(4)": "知识推理",
+        "#research .work-card:nth-of-type(3) .work-title": "基于大语言模型的虚拟学生作答生成与成绩预测",
+        "#research .work-card:nth-of-type(3) .highlight": "<strong>重点：</strong>生成虚拟学生作答记录，用于真实数据有限场景下的知识追踪研究。",
+        "#research .work-card:nth-of-type(3) .work-desc": "探索面向教育建模的<strong>大语言模型虚拟学生作答生成</strong>方法，服务于真实数据有限或敏感的场景。整体流程包括学生画像构建、作答行为模拟、<strong>ASSISTments 格式对齐</strong>以及基于 pyKT 的知识追踪实验。",
+        "#research .work-card:nth-of-type(3) .tag:nth-child(1)": "教育数据",
+        "#research .work-card:nth-of-type(3) .tag:nth-child(2)": "学生建模",
+        "#research .work-card:nth-of-type(3) .tag:nth-child(3)": "知识追踪",
+        "#research .work-card:nth-of-type(3) .tag:nth-child(4)": "合成数据",
+        "#awards h2": "获奖与竞赛",
+        ".award-list li:nth-child(1) > span:last-child": "<span class=\"award-main\">全国一等奖</span>，中国大学生工程实践与创新能力大赛 <span class=\"award-detail\">（2025）</span>",
+        ".award-list li:nth-child(2) > span:last-child": "<span class=\"award-main\">全国二等奖</span>，中国大学生服务外包创新创业大赛 <span class=\"award-detail\">（2025）</span>",
+        ".award-list li:nth-child(3) > span:last-child": "<span class=\"award-main\">成功参赛奖</span>，美国大学生数学建模竞赛 <span class=\"award-detail\">（2025）</span>",
+        ".award-list li:nth-child(4) > span:last-child": "<span class=\"award-main\">全国金奖</span>，STEAM 乡村小课堂毛毛虫基金会专项 <span class=\"award-detail\">（2024）</span>",
+        ".award-list li:nth-child(5) > span:last-child": "<span class=\"award-main\">铜奖与最佳美育奖</span>，立邦为爱上色中国大学生农村支教项目 <span class=\"award-detail\">（2025）</span>",
+        ".award-list li:nth-child(6) > span:last-child": "<span class=\"award-main\">优秀学生干部、优秀学生、科技创新先进个人</span> <span class=\"award-detail\">（重庆大学，2024 - 2025）</span>",
+        ".award-list li:nth-child(7) > span:last-child": "<span class=\"award-main\">综合奖学金</span> <span class=\"award-detail\">（重庆大学，2024 - 2025）</span>",
+        "#service h2": "服务实践",
+        "#service .service-card:nth-child(1) > strong": "学生工作",
+        "#service .compact-list li:nth-child(1) .role-line strong": "2023级数据科学与大数据技术2班团支部团支书",
+        "#service .compact-list li:nth-child(1) p": "负责团支部日常事务与主题团日活动；策划的抗战精神主题团日活动获评<strong class=\"inline\">重庆大学样板团日活动</strong>，连续三个学期考核优秀。",
+        "#service .compact-list li:nth-child(2) .role-line strong": "大数据与软件学院学生会实践部部长",
+        "#service .compact-list li:nth-child(2) p": "组织<strong class=\"inline\">10余项志愿与校园活动</strong>，累计上报<strong class=\"inline\">4000余小时志愿时长</strong>，参与社会实践项目管理，并获评重庆大学学生会先进个人。",
+        "#service .compact-list li:nth-child(3) .role-line strong": "校团委学生办公室外联部副部长",
+        "#service .compact-list li:nth-child(3) p": "组织覆盖<strong class=\"inline\">千余人</strong>的校级活动，并参与暑期社会实践调研报告撰写，获校级<strong class=\"inline\">优秀调研报告</strong>。",
+        "#service .service-card:nth-child(2) > strong": "支教与数字素养教育",
+        "#service .service-card:nth-child(2) p": "两度带队参与乡村教育项目，将<strong class=\"inline\">编程、STEAM、人工智能与数字素养</strong>带给四川和新疆学生。团队获得 STEAM 乡村小课堂知行计划<strong class=\"inline\">全国唯一金奖</strong>和立邦为爱上色农村支教项目全国铜奖，相关事迹获<strong class=\"inline\">人民日报</strong>、重庆共青团等主流媒体报道。"
+      }
+    };
+
+    function setLanguage(lang) {
+      const dictionary = i18n[lang] || i18n.en;
+      Object.entries(dictionary).forEach(([selector, value]) => {
+        const element = document.querySelector(selector);
+        if (element) {
+          element.innerHTML = value;
+        }
+      });
+
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+      const toggle = document.querySelector(".lang-toggle");
+      if (toggle) {
+        toggle.textContent = lang === "zh" ? "EN" : "中文";
+        toggle.setAttribute("aria-pressed", String(lang === "zh"));
+      }
+      localStorage.setItem("homepage-language", lang);
+    }
+
+    const initialLanguage = localStorage.getItem("homepage-language") || "en";
+    setLanguage(initialLanguage);
+
+    document.querySelector(".lang-toggle")?.addEventListener("click", () => {
+      const nextLanguage = document.documentElement.lang === "zh-CN" ? "en" : "zh";
+      setLanguage(nextLanguage);
+    });
+  </script>
 </body>
 </html>
 
